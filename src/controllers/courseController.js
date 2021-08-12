@@ -13,7 +13,7 @@ router.get(
       let query = {};
 
       if (req.query.titulo) {
-        query = { title: req.query.titulo };
+        query = { title: { $regex: req.query.titulo } };
       }
 
       const courses = await Course.find(query).sort({

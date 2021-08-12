@@ -14,7 +14,7 @@ router.get(
       let query = {};
 
       if (req.query.nome) {
-        query = { name: req.query.nome };
+        query = { name: { $regex: req.query.nome } };
       }
 
       const students = await Student.find(query).sort({
