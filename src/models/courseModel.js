@@ -28,6 +28,12 @@ const courseSchema = new mongoose.Schema(
     expirationDate: {
       type: Date,
     },
+    students: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Student",
+      },
+    ],
     //Future implementation: list of professors
     // professors: [
     //   {
