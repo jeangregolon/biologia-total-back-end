@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("../database/index");
 
 const StudentSchema = new mongoose.Schema(
   {
@@ -25,4 +25,4 @@ const StudentSchema = new mongoose.Schema(
 
 const Student = mongoose.model("Student", StudentSchema);
 
-module.exports(Student);
+module.exports = Student;
