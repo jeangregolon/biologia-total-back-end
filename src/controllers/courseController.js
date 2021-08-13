@@ -121,8 +121,10 @@ router.get(
   "/enroll/:courseId/:studentId",
   expressAsyncHandler(async (req, res) => {
     try {
-      const course = await Course.findById(req.params.courseId);
-      const student = await Student.findById(req.params.studentId);
+      const studentId = req.params.studentId;
+      const courseId = req.params.courseId;
+      const course = await Course.findById(courseId);
+      const student = await Student.findById(studentId);
 
       if (!course) {
         res.status(404).send({ message: "Curso não encontrado." });
@@ -130,9 +132,11 @@ router.get(
       if (!student) {
         res.status(404).send({ message: "Aluno não encontrado." });
       }
-      //Verify if student is already enrolled
-      course.students.push(req.params.studentId);
+
+      course.students.push(studentId);
+      student.courses.push(courseId);
       const updatedCourse = await course.save();
+      const updatedStudent = await student.save();
       res
         .status(200)
         .send({ updatedCourse, message: "Aluno matriculado com sucesso!" });
