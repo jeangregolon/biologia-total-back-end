@@ -107,4 +107,23 @@ router.put(
   })
 );
 
+//Returns a list of courses the student is enrolled
+router.get(
+  "/courses/:id",
+  expressAsyncHandler(async (req, res) => {
+    try {
+      const student = await Student.findById(req.params.id).populate(
+        "courses",
+        "title"
+      );
+      if (!student) {
+        res.status(404).send({ message: "Aluno não encontrado." });
+      }
+      res.status(200).send(student.courses);
+    } catch (error) {
+      res.status(400).send({ message: "Erro ao buscar aluno." });
+    }
+  })
+);
+
 module.exports = (app) => app.use("/students", router);
