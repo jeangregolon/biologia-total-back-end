@@ -5,13 +5,14 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "start": "pm2 start src/index.js --name=backend-bt"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
-    "mongoose": "^5.13.7"
+    "mongoose": "^5.13.7",
+    "pm2": "^5.1.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
