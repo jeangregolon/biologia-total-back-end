@@ -2,6 +2,7 @@ const express = require("express");
 const expressAsyncHandler = require("express-async-handler");
 
 const Course = require("../models/courseModel");
+const Student = require("../models/studentModel");
 
 const router = express.Router();
 
@@ -111,6 +112,35 @@ router.put(
       }
     } catch (error) {
       res.status(400).send({ message: "Não foi possível atualizar o curso." });
+    }
+  })
+);
+
+//Enrolls a student in a course
+router.get(
+  "/enroll/:courseId/:studentId",
+  expressAsyncHandler(async (req, res) => {
+    try {
+      const course = await Course.findById(req.params.courseId);
+      const student = await Student.findById(req.params.studentId);
+
+      if (!course) {
+        res.status(404).send({ message: "Curso não encontrado." });
+      }
+      if (!student) {
+        res.status(404).send({ message: "Aluno não encontrado." });
+      }
+      //Verify if student is already enrolled
+      course.students.push(req.params.studentId);
+      const updatedCourse = await course.save();
+      res
+        .status(200)
+        .send({ updatedCourse, message: "Aluno matriculado com sucesso!" });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(400)
+        .send({ message: "Não foi possível efetuar a matrícula." });
     }
   })
 );
