@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "start": "pm2 start src/index.js --name=backend-bt --watch"
+    "start": "pm2 start src/index.js --name=backend-bt --watch",
+    "stop": "pm2 stop backend-bt"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
