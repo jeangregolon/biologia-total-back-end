@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/index.js",
+    "test": "jest",
     "start": "pm2 start src/index.js --name=backend-bt --watch",
     "stop": "pm2 stop backend-bt"
   },
@@ -16,6 +17,8 @@
     "pm2": "^5.1.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.1.5"
   }
 }
