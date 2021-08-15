@@ -7,11 +7,15 @@ Esta aplicação é uma API em que é possível cadastrar, editar, listar e pesq
 
 [Documentação da API](https://github.com/jeangregolon/assets/blob/main/Documenta%C3%A7%C3%A3o%20API%20-Biologia%20Total%20-%20Back-end.pdf)
 
+API disponível na [AWS](http://52.67.95.84:5000) - http://52.67.95.84:5000
+
 ## Tecnologias utilizadas
 - NodeJS
 - Express
 - Mongoose
 - MongoDB
+- Jest
+- Supertest
 
 ## Como executar o projeto
 
@@ -34,6 +38,13 @@ npm run start
 
 # parar o projeto (produção - pm2)
 npm run stop
+
+#executar testes unitários (Linux)
+npm run test
+
+#executar testes unitários (Windows)
+npm run wset
+npm run wtest
 
 ```
 
