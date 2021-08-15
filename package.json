@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "test": "NODE_ENV=test jest",
+    "wset": "SET NODE_ENV=test",
+    "wtest": "jest",
     "start": "pm2 start src/index.js --name=backend-bt --watch",
     "stop": "pm2 stop backend-bt"
   },
