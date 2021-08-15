@@ -125,12 +125,19 @@ router.get(
       const courseId = req.params.courseId;
       const course = await Course.findById(courseId);
       const student = await Student.findById(studentId);
+      const enrolled = await Course.find({ students: studentId });
 
       if (!course) {
         res.status(404).send({ message: "Curso não encontrado." });
       }
       if (!student) {
         res.status(404).send({ message: "Aluno não encontrado." });
+      }
+
+      for (i = 0; i < enrolled.length; i++) {
+        if (enrolled[i]._id == courseId) {
+          res.status(400).send({ message: "Aluno já matriculado" });
+        }
       }
 
       course.students.push(studentId);
