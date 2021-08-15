@@ -27,9 +27,6 @@ git clone https://github.com/jeangregolon/biologia-total-back-end.git
 # instalar dependências
 npm install
 
-# executar o MongoDB
-mongod
-
 # executar o projeto (desenvolvimento - nodemon)
 npm run dev
 
